@@ -77,7 +77,7 @@ export default function Home() {
           />
           <input type="submit" value="Generate Salary" />
         </form>
-        <div className={styles.result}>{result}</div>
+        <div className={styles.result}>{result && result.content}</div>
       </main>
     </div>
   );

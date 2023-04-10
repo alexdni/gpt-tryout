@@ -47,12 +47,12 @@ export default async function (req, res) {
     return;
   }
 
-  console.log('Prompt is: ' + generatePrompt(job_title, city, year));
-
   try {
-    const completion = await openai.createCompletion({
+    const completion = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
-      prompt: generatePrompt(job_title, city, year),
+      messages: [
+        { role: 'user', content: generatePrompt(job_title, city, year) },
+      ],
       temperature: 0.6,
     });
     res.status(200).json({ result: completion.data.choices[0].message });
